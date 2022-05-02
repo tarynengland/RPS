@@ -21,8 +21,8 @@ public class Position {
         }
     }
     public Position(Bounds b, int radius){
-        this(radius + (Math.random() * (b.getWidth() - 4 * radius)),
-            radius + (Math.random() * (b.getHeight() -4 * radius)));
+        this(radius + (Math.random() * (b.getWidth() - 2 * radius)),
+            radius + (Math.random() * (b.getHeight() -2 * radius)));
     }
     public double getX(){
         return xPos;
@@ -42,7 +42,7 @@ public class Position {
     public void changedY(){
         dY *= -1;
     }
-    public void Moving(Position pos, Bounds b, int radius){
+    public void moving(Position pos, Bounds b, int radius){
         xPos += pos.getdX();
         yPos += pos.getdY();
         if(xPos > b.getWidth() - radius || xPos < radius){
