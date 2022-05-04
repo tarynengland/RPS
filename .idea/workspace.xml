@@ -35,6 +35,11 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\TarynEngland\AppData\Local\gitkraken\app-8.4.0\RPS\src\RPS\GUI" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="RPSApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="RPS.GUI.RPSApp" />
