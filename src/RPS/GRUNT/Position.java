@@ -1,4 +1,4 @@
-package RPS;
+package RPS.GRUNT;
 
 import javafx.geometry.Bounds;
 

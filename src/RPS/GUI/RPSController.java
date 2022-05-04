@@ -1,5 +1,8 @@
-package RPS;
+package RPS.GUI;
 
+import RPS.GRUNT.Objects;
+import RPS.GRUNT.Player;
+import RPS.GRUNT.Teams;
 import javafx.animation.AnimationTimer;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;

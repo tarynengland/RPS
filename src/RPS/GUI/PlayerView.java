@@ -1,8 +1,9 @@
-package RPS;
+package RPS.GUI;
 
+import RPS.GRUNT.Player;
 import javafx.scene.Parent;
-import javafx.scene.shape.Circle;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 
 public class PlayerView extends Parent {
 

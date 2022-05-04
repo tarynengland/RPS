@@ -37,11 +37,11 @@
   </component>
   <component name="RunManager">
     <configuration name="RPSApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="RPS.RPSApp" />
+      <option name="MAIN_CLASS_NAME" value="RPS.GUI.RPSApp" />
       <module name="RPS" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="RPS.*" />
+          <option name="PATTERN" value="RPS.GUI.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
