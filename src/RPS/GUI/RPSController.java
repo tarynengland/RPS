@@ -1,21 +1,19 @@
 package RPS.GUI;
 
-import RPS.GRUNT.Objects;
-import RPS.GRUNT.Player;
-import RPS.GRUNT.Teams;
+
 import javafx.animation.AnimationTimer;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.chart.PieChart;
+import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.Pane;
-import javafx.scene.control.Button;
 import javafx.scene.paint.Color;
+import RPS.GRUNT.*;
 
-//import java.awt.*;
 import java.util.ArrayList;
 
 public class RPSController {
@@ -63,7 +61,6 @@ public class RPSController {
                 royale();
                 updateViews();
                 last = now;
-
             }
         }
     }
@@ -100,7 +97,7 @@ public class RPSController {
     public void startup(){
         clock.stop();
         arena.getChildren().clear();
-        RPS = new Teams( Math.abs(rocks + papers + scissor)-1, Objects.PAPER, arena.getBoundsInLocal());
+        RPS = new Teams( Math.abs(rocks + papers + scissor)-1, Objects.ROCK, arena.getBoundsInLocal());
         plv = new ArrayList<>();
         for(Player player: RPS.getTeam()){
             PlayerView pv = new PlayerView(player);

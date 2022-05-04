@@ -7,6 +7,7 @@ public class Player {
     private Objects rps;
     private Position spot;
     private Position here;
+    private Move move;
 
     private Bounds arena;
 
@@ -15,6 +16,7 @@ public class Player {
         spot = new Position(arena, 5);
         this.arena = arena;
         here = new Position(spot.getX(), spot.getY());
+        move = new Move();
     }
     public Position getHere(){
         return here;
@@ -23,7 +25,7 @@ public class Player {
         return rps;
     }
     public void move(){
-        spot.moving(here, arena, 5);
+        spot.moving(here, arena, 5, move);
     }
     public void clash(Player opponent){
         if(this.spot.edge(opponent.spot) < 2 * 5){

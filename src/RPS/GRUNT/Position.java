@@ -6,14 +6,11 @@ public class Position {
 
     private double xPos;
     private double yPos;
-    private double dX;
-    private double dY;
+
 
     public Position(double x, double y) {
         this.xPos = x;
         this.yPos = y;
-        dX = -1;
-        dY = 1;
     }
     public Position(Bounds b, int radius){
         this(radius + (Math.random() * (b.getWidth() - 2 * radius)),
@@ -25,28 +22,17 @@ public class Position {
     public double getY(){
         return yPos;
     }
-    public double getdX(){
-        return dX*2;
-    }
-    public double getdY(){
-        return dY*2;
-    }
-    public void changedX(){
-        dX *= -1;
-    }
-    public void changedY(){
-        dY *= -1;
-    }
-    public void moving(Position pos, Bounds b, int radius){
-        xPos += dX;
-        yPos += dY;
-        if(xPos > b.getWidth() - radius || xPos < radius){
-            pos.changedX();
-            xPos += dX;
+
+    public void moving(Position pos, Bounds b, int radius, Move move){
+        pos.xPos += move.getdX();
+        pos.yPos += move.getdY();
+        if(pos.xPos > b.getWidth() - radius || pos.xPos < radius){
+            move.changedX();
+            pos.xPos += move.getdX();
         }
-        if(yPos > b.getHeight() - radius || yPos < radius){
-            pos.changedY();
-            yPos += dY;
+        if(pos.yPos > b.getHeight() - radius || pos.yPos < radius){
+            move.changedY();
+            pos.yPos += move.getdY();
         }
     }
     public double edge(Position pos){
