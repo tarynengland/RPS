@@ -1,7 +1,6 @@
 package RPS.GRUNT;
 
-import RPS.GRUNT.Objects;
-import RPS.GRUNT.Player;
+
 import javafx.geometry.Bounds;
 
 import java.util.ArrayList;

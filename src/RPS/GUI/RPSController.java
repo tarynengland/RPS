@@ -4,6 +4,8 @@ package RPS.GUI;
 import javafx.animation.AnimationTimer;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
@@ -84,6 +86,9 @@ public class RPSController {
                 scissor = (int) (scissors.getValue());
             }
         });
+        ObservableList<PieChart.Data> pieChart = FXCollections.observableArrayList(new PieChart.Data("Rock", rocks),
+                new PieChart.Data("Paper", papers),new PieChart.Data("Scissors", scissor));
+        chart.setData(pieChart);
         clock = new Movement();
         chart = new PieChart();
         disableButton(true, true);
@@ -97,7 +102,7 @@ public class RPSController {
     public void startup(){
         clock.stop();
         arena.getChildren().clear();
-        RPS = new Teams( Math.abs(rocks + papers + scissor)-1, Objects.ROCK, arena.getBoundsInLocal());
+        RPS = new Teams( (rocks + papers + scissor)-1, Objects.SCISSORS, arena.getBoundsInLocal());
         plv = new ArrayList<>();
         for(Player player: RPS.getTeam()){
             PlayerView pv = new PlayerView(player);
@@ -123,11 +128,30 @@ public class RPSController {
     }
     public void updateViews(){
         updatePlayer();
+        updateChart();
     }
     public void updatePlayer(){
         for(PlayerView pv: plv){
             pv.update();
         }
+    }
+    public void updateChart(){
+        int rock = 0;
+        int paper = 0;
+        int scissors = 0;
+        for(Player player: RPS.getTeam()){
+            if(player.getRPS() == Objects.ROCK){
+                rock++;
+            }else if(player.getRPS() == Objects.PAPER){
+                paper++;
+            }else{
+                scissors++;
+            }
+        }
+        ObservableList<PieChart.Data> pieChart = FXCollections.observableArrayList(new PieChart.Data("Rock", rock),
+                new PieChart.Data("Paper", paper),new PieChart.Data("Scissors", scissors),
+                new PieChart.Data("Testing", 5));
+        chart.setData(pieChart);
     }
 }
 
