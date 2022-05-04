@@ -12,13 +12,8 @@ public class Position {
     public Position(double x, double y) {
         this.xPos = x;
         this.yPos = y;
-        if (Math.random() < 0.5) {
-            dX = 1;
-            dY = -1;
-        }else{
-            dX = -1;
-            dY = 1;
-        }
+        dX = -1;
+        dY = 1;
     }
     public Position(Bounds b, int radius){
         this(radius + (Math.random() * (b.getWidth() - 2 * radius)),
@@ -31,10 +26,10 @@ public class Position {
         return yPos;
     }
     public double getdX(){
-        return dX;
+        return dX*2;
     }
     public double getdY(){
-        return dY;
+        return dY*2;
     }
     public void changedX(){
         dX *= -1;
@@ -43,15 +38,15 @@ public class Position {
         dY *= -1;
     }
     public void moving(Position pos, Bounds b, int radius){
-        xPos += pos.getdX();
-        yPos += pos.getdY();
+        xPos += dX;
+        yPos += dY;
         if(xPos > b.getWidth() - radius || xPos < radius){
             pos.changedX();
-            xPos += pos.getdX();
+            xPos += dX;
         }
         if(yPos > b.getHeight() - radius || yPos < radius){
             pos.changedY();
-            yPos += pos.getdY();
+            yPos += dY;
         }
     }
     public double edge(Position pos){
