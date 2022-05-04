@@ -5,10 +5,16 @@ public class Move {
     private double dY;
 
     public Move() {
-        if (Math.random() < 0.5) {
+        if (Math.random() < 0.25) {
+            this.dX = 1;
+            this.dY = 1;
+        } else if(Math.random() < 0.50){
+            this.dX = -1;
+            this.dY = -1;
+        }else if(Math.random() < 0.75){
             this.dX = -1;
             this.dY = 1;
-        } else {
+        }else{
             this.dX = 1;
             this.dY = -1;
         }

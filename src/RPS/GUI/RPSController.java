@@ -2,8 +2,7 @@ package RPS.GUI;
 
 
 import javafx.animation.AnimationTimer;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
+import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -49,6 +48,7 @@ public class RPSController {
     Teams RPS;
     ArrayList<PlayerView> plv;
     private Movement clock;
+    private PieChart charts;
 
     private class Movement extends AnimationTimer {
 
@@ -68,27 +68,13 @@ public class RPSController {
     }
     @FXML
     public void initialize(){
-        rock.valueProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
-                rocks = (int) (rock.getValue());
-            }
-        });
-        paper.valueProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
-                papers = (int) (paper.getValue());
-            }
-        });
-        scissors.valueProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
-                scissor = (int) (scissors.getValue());
-            }
-        });
+        rock.valueProperty().addListener((observableValue, number, t1) -> rocks = (int) (rock.getValue()));
+        paper.valueProperty().addListener((observableValue, number, t1) -> papers = (int) (paper.getValue()));
+        scissors.valueProperty().addListener((observableValue, number, t1) -> scissor = (int) (scissors.getValue()));
         ObservableList<PieChart.Data> pieChart = FXCollections.observableArrayList(new PieChart.Data("Rock", rocks),
                 new PieChart.Data("Paper", papers),new PieChart.Data("Scissors", scissor));
-        chart.setData(pieChart);
+        pieChart.forEach(data -> data.nameProperty().bind(Bindings.concat(data.getName(), " ", data.pieValueProperty())));
+        chart.getData().addAll(pieChart);
         clock = new Movement();
         chart = new PieChart();
         disableButton(true, true);
@@ -102,7 +88,7 @@ public class RPSController {
     public void startup(){
         clock.stop();
         arena.getChildren().clear();
-        RPS = new Teams( (rocks + papers + scissor)-1, Objects.SCISSORS, arena.getBoundsInLocal());
+        RPS = new Teams(rocks,papers,scissor,Objects.ROCK,Objects.PAPER,Objects.SCISSORS,arena.getBoundsInLocal());
         plv = new ArrayList<>();
         for(Player player: RPS.getTeam()){
             PlayerView pv = new PlayerView(player);
@@ -110,6 +96,7 @@ public class RPSController {
             plv.add(pv);
         }
         disableButton(false,true);
+
         updateViews();
     }
     @FXML
@@ -149,9 +136,9 @@ public class RPSController {
             }
         }
         ObservableList<PieChart.Data> pieChart = FXCollections.observableArrayList(new PieChart.Data("Rock", rock),
-                new PieChart.Data("Paper", paper),new PieChart.Data("Scissors", scissors),
-                new PieChart.Data("Testing", 5));
-        chart.setData(pieChart);
+                new PieChart.Data("Paper", paper),new PieChart.Data("Scissors", scissors));
+        pieChart.forEach(data -> data.nameProperty().bind(Bindings.concat(data.getName(), " ", data.pieValueProperty())));
+        chart.getData().addAll(pieChart);
     }
 }
 

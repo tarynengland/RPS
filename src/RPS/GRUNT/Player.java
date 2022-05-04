@@ -13,7 +13,7 @@ public class Player {
 
     public Player(Objects rps, Bounds arena){
         this.rps = rps;
-        spot = new Position(arena, 5);
+        spot = new Position(arena, 10);
         this.arena = arena;
         here = new Position(spot.getX(), spot.getY());
         move = new Move();
@@ -25,10 +25,10 @@ public class Player {
         return rps;
     }
     public void move(){
-        spot.moving(here, arena, 5, move);
+        spot.moving(here, arena, 10, move);
     }
     public void clash(Player opponent){
-        if(this.spot.edge(opponent.spot) < 2 * 5){
+        if(this.here.edge(opponent.here) < 2 * 5){
             if(opponent.rps == Objects.ROCK && this.rps == Objects.SCISSORS){
                 this.rps = Objects.ROCK;
             }else if(opponent.rps == Objects.SCISSORS && this.rps == Objects.PAPER){

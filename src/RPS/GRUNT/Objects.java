@@ -15,7 +15,7 @@ public enum Objects {
     },
     SCISSORS {
         public Color getColor(){
-            return Color.RED;
+            return Color.LIMEGREEN;
         }
     };
     public abstract Color getColor();

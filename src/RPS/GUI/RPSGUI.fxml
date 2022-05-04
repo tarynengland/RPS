@@ -66,19 +66,19 @@
     <bottom>
         <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
             <children>
-                <Button fx:id="start" mnemonicParsing="false" onAction="#start" onMousePressed="#start" text="Start">
+                <Button fx:id="start" mnemonicParsing="false" onAction="#start" onMousePressed="#start" prefWidth="150.0" text="Start">
                     <HBox.margin>
-                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                        <Insets bottom="15.0" left="40.0" right="20.0" top="15.0" />
                     </HBox.margin>
                 </Button>
-                <Button fx:id="stop" mnemonicParsing="false" onAction="#stop" onMousePressed="#stop" text="Stop">
+                <Button fx:id="stop" mnemonicParsing="false" onAction="#stop" onMousePressed="#stop" prefWidth="150.0" text="Stop">
                     <HBox.margin>
-                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                        <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
                     </HBox.margin>
                 </Button>
-                <Button fx:id="reset" mnemonicParsing="false" onAction="#startup" text="Restart">
+                <Button fx:id="reset" mnemonicParsing="false" onAction="#startup" prefWidth="150.0" text="Restart">
                     <HBox.margin>
-                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                        <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
                     </HBox.margin>
                 </Button>
             </children>
