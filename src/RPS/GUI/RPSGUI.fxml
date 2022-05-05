@@ -76,7 +76,7 @@
                         <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
                     </HBox.margin>
                 </Button>
-                <Button fx:id="reset" mnemonicParsing="false" onAction="#startup" prefWidth="150.0" text="Restart">
+                <Button fx:id="reset" mnemonicParsing="false" onAction="#startup" prefWidth="150.0" text="Setup/Reset">
                     <HBox.margin>
                         <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
                     </HBox.margin>

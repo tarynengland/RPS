@@ -19,7 +19,7 @@ public class PlayerView extends Parent {
     }
     public void update(){
         c.setFill(player.getRPS().getColor());
-        c.setRadius(5);
+        c.setRadius(10);
         c.setTranslateX(player.getHere().getX());
         c.setTranslateY(player.getHere().getY());
     }
