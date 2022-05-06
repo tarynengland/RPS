@@ -70,12 +70,12 @@ public class RPSController {
         rock.valueProperty().addListener((observableValue, number, t1) -> rocks = (int) (rock.getValue()));
         paper.valueProperty().addListener((observableValue, number, t1) -> papers = (int) (paper.getValue()));
         scissors.valueProperty().addListener((observableValue, number, t1) -> scissor = (int) (scissors.getValue()));
-        ObservableList<PieChart.Data> pieChart = FXCollections.observableArrayList(new PieChart.Data("Rock",1),
-                new PieChart.Data("Paper", 1),new PieChart.Data("Scissors", 1));
-        pieChart.forEach(data -> data.nameProperty().bind(Bindings.concat(data.getName(), " ")));
+        ObservableList<PieChart.Data> pieChart = FXCollections.observableArrayList(new PieChart.Data("Rock",0),
+                new PieChart.Data("Paper", 0),new PieChart.Data("Scissors", 0));
+        pieChart.forEach(data -> data.nameProperty().bind(Bindings.concat(data.getName(), " ", data.pieValueProperty())));
         chart.setData(pieChart);
+        chart.legendVisibleProperty().setValue(false);
         clock = new Movement();
-        chart = new PieChart();
         disableButton(true, true);
         arena.setBackground(new Background(new BackgroundFill(Color.WHEAT, null, null)));
     }
@@ -135,12 +135,13 @@ public class RPSController {
                 scissors++;
             }
         }
-        ObservableList<PieChart.Data> pieChart = FXCollections.observableArrayList(new PieChart.Data("Rock", rock),
-                new PieChart.Data("Paper", paper),new PieChart.Data("Scissors", scissors));
-        pieChart.forEach(data -> data.nameProperty().bind(Bindings.concat(data.getName(), " ", data.pieValueProperty())));
-        chart.setData(pieChart);
-        chart = new PieChart();
-
+        //ObservableList<PieChart.Data> pieChart = FXCollections.observableArrayList(new PieChart.Data("Rock", rock),
+        //        new PieChart.Data("Paper", paper),new PieChart.Data("Scissors", scissors));
+        //pieChart.forEach(data -> data.nameProperty().bind(Bindings.concat(data.getName(), " ", data.pieValueProperty())));
+        //chart.setData(pieChart);
+        chart.getData().get(0).setPieValue(rock);
+        chart.getData().get(1).setPieValue(paper);
+        chart.getData().get(2).setPieValue(scissors);
     }
 }
 
