@@ -28,7 +28,7 @@ public class Player {
         spot.moving(here, arena, 10, move);
     }
     public void clash(Player opponent){
-        if(this.here.edge(opponent.here) < 2 * 5){
+        if(this.here.edge(opponent.here) < 2 * 6){
             if(opponent.rps == Objects.ROCK && this.rps == Objects.SCISSORS){
                 this.rps = Objects.ROCK;
             }else if(opponent.rps == Objects.SCISSORS && this.rps == Objects.PAPER){

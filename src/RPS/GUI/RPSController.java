@@ -121,27 +121,31 @@ public class RPSController {
             pv.update();
         }
     }
-    public void updateChart(){
+    public void updateChart() {
         double rock = 0.0;
         double paper = 0.0;
         double scissors = 0.0;
-        for(Player player: RPS.getTeam()){
+        for (Player player : RPS.getTeam()) {
             Objects rps = player.getRPS();
-            if(rps == Objects.ROCK){
+            if (rps == Objects.ROCK) {
                 rock++;
-            }else if(rps == Objects.PAPER){
+            } else if (rps == Objects.PAPER) {
                 paper++;
-            }else if(rps == Objects.SCISSORS){
+            } else if (rps == Objects.SCISSORS) {
                 scissors++;
             }
         }
-        //ObservableList<PieChart.Data> pieChart = FXCollections.observableArrayList(new PieChart.Data("Rock", rock),
-        //        new PieChart.Data("Paper", paper),new PieChart.Data("Scissors", scissors));
-        //pieChart.forEach(data -> data.nameProperty().bind(Bindings.concat(data.getName(), " ", data.pieValueProperty())));
-        //chart.setData(pieChart);
-        chart.getData().get(0).setPieValue(rock);
-        chart.getData().get(1).setPieValue(paper);
-        chart.getData().get(2).setPieValue(scissors);
+        double total = rock + paper + scissors;
+        if (rock == total || paper == total || scissors == total) {
+            chart.getData().get(0).setPieValue(rock);
+            chart.getData().get(1).setPieValue(paper);
+            chart.getData().get(2).setPieValue(scissors);
+            stop();
+        } else {
+            chart.getData().get(0).setPieValue(rock);
+            chart.getData().get(1).setPieValue(paper);
+            chart.getData().get(2).setPieValue(scissors);
+        }
     }
 }
 
